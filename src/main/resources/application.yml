@@ -7,3 +7,5 @@ spring:
   #禁用thmeleaf的缓存
   thymeleaf:
     cache: false
+server:
+  port: 8080
