@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="jquery/jquery-3.2.1.min.js"></script>
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/fastclick.js"></script>
+<body>
+
+<div class="layui-form-item">
+    <form th:action="@{/find}" method="post">
+    <label class="layui-form-label">线路查询</label>
+    <div class="layui-input-block">
+        <label>起点:</label>
+        <select  id="selectId" name="selectId"  lay-filter="city">
+            <option  th:each="list:${listStationsName}" th:value="${list.id}"  th:text="${list.stationName}"></option>
+        </select>
+    </div>
+    <div class="layui-input-block">
+        <label>终点:</label>
+        <select id="selectId2" name="selectId2" lay-filter="city">
+            <option   th:each="list:${listStationsName}"  th:value="${list.id}"  th:text="${list.stationName}"></option>
+        </select>
+    </div>
+        <p>[[${msg}]]</p>
+    <div>
+        <input type="submit" value="查询">
+    </div>
+</form>
+</div>
+<div>
+    <span th:each="ls:${mapList}" th:text="${ls.startStationName}"></span>
+    <span th:each="ls:${mapList}" th:text="${ls.endStationName}"></span>
+
+    <td th:each="ml:${mapList}" th:text="${ml.list}"></td>
+</div>
+</body>
+</html>
